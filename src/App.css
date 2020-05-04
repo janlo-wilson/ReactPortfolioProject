@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightyellow;
+}
+
+h2, h3, h5 {
+    font-family: "Shadows Into Light Two", cursive;
+}
+
+.navbar-dark {
+    background-color: rgb(221, 161, 137);
+}
+
+.jumbotron {
+    margin: 0;
+    padding: 30px; 
+    text-align: center;
+    background-image: url("../img/Beach_Sunset.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 350% 275%;
+    color: white;
+    /*background-image: linear-gradient(to right, rgb(252, 166, 133), rgb(243, 236, 223), rgb(252, 252, 85));*/
+}
+
+.row-content {
+    padding: 50px 0;
+    border-bottom: 1px ridge;
+    min-height: 200px;
+}
+
+footer {
+    background-image: linear-gradient(to right, rgb(252, 166, 133), rgb(243, 236, 223), rgb(252, 252, 85));
+}
+
+a {
+    color: rgb(15, 161, 219);
+}
+
+.modal-body {
+    background-color: lightyellow;
+}
+
+#eventForm, #feedbackForm {
+    background-color: lightyellow;
+    border: 1px solid darkgrey;
+}
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
+#artsImage {
+    height: 300px;
+    width: 225px;
+}
+
+#popularEvent {
+    background-color: lightyellow;
+    border: 2px solid darkgrey;
+}
+
+#popularTitle {
+    color: skyblue;
+}
+
+.dropdown-menu {
+    background-color: lightyellow;
+    position: relative;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
