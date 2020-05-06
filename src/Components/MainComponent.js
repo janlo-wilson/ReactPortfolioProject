@@ -4,22 +4,22 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import Calendar from './CalendarComponent';
-import Events from './EventComponent';
+import Event from './EventComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { CAMPSITES } from '../shared/campsites';
-import { COMMENTS } from '../shared/comments';
-import { PARTNERS } from '../shared/partners';
-import { PROMOTIONS } from '../shared/promotions';
+import { ARTS } from '../shared/Arts';
+import { MUSIC } from '../shared/Music';
+import { SPORTS } from '../shared/Sports';
+import { VOLUNTEER } from '../shared/Volunteer';
 
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            campsites: CAMPSITES,
-            comments: COMMENTS,
-            partners: PARTNERS,
-            promotions: PROMOTIONS
+            arts: ARTS,
+            music: MUSIC,
+            sports: SPORTS,
+            volunteer: VOLUNTEER
         };
     }
 
