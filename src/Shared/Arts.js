@@ -31,7 +31,7 @@ export const ARTS = [
         name: "Meading at the Garden",
         date: "Saturday, August 1, 2020",
         time: "12:00 p.m.",
-        location: "Alta Vista Botanical Garden, Vista",
+        location: "Alta Vista Botanical Garden (Vista)",
         description: "The largest mead festival on the west coast, Meading at the Garden features over 35 meaderies, cideries, and breweries. You can also expect: live music, honey tastings, food vendors, axe throwing, and live blacksmithing & leatherworking demonstrations. As always, 100% of all proceeds are donated to the Alta Vista Botanical Gardens.",
         featured: false,
     }
