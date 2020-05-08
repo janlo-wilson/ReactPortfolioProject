@@ -15,7 +15,7 @@ h2, h3, h5 {
     margin: 0;
     padding: 30px; 
     text-align: center;
-    background-image: url("../img/Beach_Sunset.png");
+    /*background-image: url("../img/Beach_Sunset.png");*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;

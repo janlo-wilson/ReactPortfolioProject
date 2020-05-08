@@ -3,14 +3,14 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
-import Calendar from './CalendarComponent';
+//import Calendar from './CalendarComponent';
 import Event from './EventComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { ARTS } from '../shared/Arts';
 import { MUSIC } from '../shared/Music';
 import { SPORTS } from '../shared/Sports';
 import { VOLUNTEER } from '../shared/Volunteer';
-
+import EventInfo from './EventInfoComponent';
 
 class Main extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class Main extends Component {
 
         const CampsiteWithId = ({ match }) => {
             return (
-                <CampsiteInfo campsite={this.state.campsites.filter(campsite => campsite.id ===
+                <EventInfo campsite={this.state.campsites.filter(campsite => campsite.id ===
                     +match.params.campsiteId)[0]}
                     comments={this.state.comments.filter(comment => comment.campsiteId ===
                         +match.params.campsiteId)} />
@@ -48,7 +48,7 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
-                    <Route exact path='/events' render={() => <Event campsites={this.state.campsites} />} />
+                    <Route exact path='/artdirectory' render={() => <Event campsites={this.state.artevents} />} />
                     <Route path='/directory/:campsiteId' component={CampsiteWithId} />
                     <Route path='/contactus' component={Contact} />
                     <Route path='/calendar' render={() => <Calendar partners={this.state.partners} />} />

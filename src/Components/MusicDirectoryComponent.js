@@ -1,25 +1,24 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import EventInfo from './EventInfoComponent'
 
-function RenderDirectoryItem({ campsite }) {
+function RenderMusicDirectoryItem({ musicevent }) {
     return (
         <Card>
-            <Link to={`/directory/${campsite.id}`}>
-                <CardImg width="100%" src={campsite.image} alt={campsite.name} />
-                <CardImgOverlay>
-                    <CardTitle>{campsite.name}</CardTitle>
-                </CardImgOverlay>
+            <Link to={`/musicdirectory/${musicevent.id}`}>
+                <CardTitle>{musicevent.name}</CardTitle>
+                <CardBody>{musicevent.date}, {musicevent.time}</CardBody>
             </Link>
         </Card>
     );
 }
 
-function Directory(props) {
-    const directory = props.campsites.map(campsite => {
+function MusicDirectory(props) {
+    const musicdirectory = props.music.map(musicevent => {
         return (
-            <div key={campsite.id} className="col-md-5 m-1">
-                <RenderDirectoryItem campsite={campsite} />
+            <div key={musicevent.id} className="col-md-5 m-1">
+                <RenderMusicDirectoryItem musicevent={musicevent} />
             </div>
         );
     });
@@ -28,19 +27,15 @@ function Directory(props) {
         <div className="container">
             <div className="row">
                 <div className="col">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Directory</BreadcrumbItem>
-                    </Breadcrumb>
-                    <h2>Directory</h2>
+                    <h2>Music Events</h2>
                     <hr />
                 </div>
             </div>
             <div className="row">
-                {directory}
+                {musicdirectory}
             </div>
         </div>
     );
 }
 
-export default Directory;
+export default MusicDirectory;

@@ -1,25 +1,24 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import EventInfo from './EventInfoComponent';
 
-function RenderDirectoryItem({ campsite }) {
+function RenderArtDirectoryItem({ artevent }) {
     return (
         <Card>
-            <Link to={`/directory/${campsite.id}`}>
-                <CardImg width="100%" src={campsite.image} alt={campsite.name} />
-                <CardImgOverlay>
-                    <CardTitle>{campsite.name}</CardTitle>
-                </CardImgOverlay>
+            <Link to={`/artdirectory/${artevent.id}`}>
+                <CardTitle>{artevent.name}</CardTitle>
+                <CardBody>{artevent.date}, {artevent.time}</CardBody>
             </Link>
         </Card>
     );
 }
 
-function Directory(props) {
-    const directory = props.campsites.map(campsite => {
+function ArtDirectory(props) {
+    const artdirectory = props.arts.map(artevent => {
         return (
-            <div key={campsite.id} className="col-md-5 m-1">
-                <RenderDirectoryItem campsite={campsite} />
+            <div key={artevent.id} className="col-md-5 m-1">
+                <RenderArtDirectoryItem artevent={artevent} />
             </div>
         );
     });
@@ -28,19 +27,15 @@ function Directory(props) {
         <div className="container">
             <div className="row">
                 <div className="col">
-                    <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>Directory</BreadcrumbItem>
-                    </Breadcrumb>
-                    <h2>Directory</h2>
+                    <h2>Arts and Theater Events</h2>
                     <hr />
                 </div>
             </div>
             <div className="row">
-                {directory}
+                {artdirectory}
             </div>
         </div>
     );
 }
 
-export default Directory;
+export default ArtDirectory;

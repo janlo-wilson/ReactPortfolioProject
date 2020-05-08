@@ -127,7 +127,7 @@ function RenderCard({ item }) {
     );
 }
 
-function Home(props) {
+/*function Home(props) {
     return (
         <div className="container">
             <div className="row">
@@ -143,6 +143,6 @@ function Home(props) {
             </div>
         </div>
     );
-}
+}*/
 
 export default Home;
