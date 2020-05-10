@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ArtDirectory from './ArtDirectoryComponent';
+import MusicDirectory from './MusicDirectoryComponent';
+import SportsDirectory from './SportsDirectoryComponent';
+import VolunteerDirectory from './VolunteerDirectoryComponent';
 
 function Event(props) {
     return (

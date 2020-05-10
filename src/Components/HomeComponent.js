@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Col } from 'reactstrap';
 
 class Home extends Component {
 
@@ -113,18 +113,6 @@ class Home extends Component {
             </div>
         );
     }
-}
-
-function RenderCard({ item }) {
-    return (
-        <Card className="h-100">
-            <CardImg src={item.image} alt={item.name} />
-            <CardBody>
-                <CardTitle>{item.name}</CardTitle>
-                <CardText>{item.description}</CardText>
-            </CardBody>
-        </Card>
-    );
 }
 
 /*function Home(props) {

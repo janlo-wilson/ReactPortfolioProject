@@ -1,4 +1,4 @@
-export const ARTS = [
+export const VOLUNTEER = [
     {
         id: 0,
         name: "Creek to Bay Cleanup",

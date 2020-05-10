@@ -1,4 +1,4 @@
-export const ARTS = [
+export const SPORTS = [
     {
         id: 0,
         name: "San Diego Loyal",

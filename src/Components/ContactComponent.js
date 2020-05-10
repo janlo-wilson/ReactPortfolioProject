@@ -29,12 +29,11 @@ class Contact extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    validate(firstName, lastName, phoneNum, email) {
+    validate(firstName, lastName, email, eventWebsite) {
         const errors = {
             firstName: '',
             lastName: '',
             email: '',
-            eventType: '',
             eventWebsite: ''
         };
 

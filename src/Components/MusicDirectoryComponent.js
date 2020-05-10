@@ -5,13 +5,34 @@ import EventInfo from './EventInfoComponent'
 
 function RenderMusicDirectoryItem({ musicevent }) {
     return (
-        <Card>
-            <Link to={`/musicdirectory/${musicevent.id}`}>
-                <CardTitle>{musicevent.name}</CardTitle>
-                <CardBody>{musicevent.date}, {musicevent.time}</CardBody>
-            </Link>
-        </Card>
+        <div className="col-md-5 m-1">
+            <Card>
+                <Link to={`/musicdirectory/${musicevent.id}`}>
+                    <CardTitle>{musicevent.name}</CardTitle>
+                    <CardBody>{musicevent.date}, {musicevent.time}</CardBody>
+                </Link>
+            </Card>
+        </div>
     );
+}
+
+function MusicEventInfo(props) {
+    if (props.musicevent) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h2>{props.musicevent.name}</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
+                    <RenderMusicDirectoryItem campsite={props.musicevent} />
+                </div>
+            </div>
+        )
+    }
+    return <div />;
 }
 
 function MusicDirectory(props) {

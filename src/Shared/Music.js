@@ -1,4 +1,4 @@
-export const ARTS = [
+export const MUSIC = [
     {
         id: 0,
         name: "FreeMartin",

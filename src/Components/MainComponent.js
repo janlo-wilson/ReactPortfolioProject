@@ -3,14 +3,17 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
-//import Calendar from './CalendarComponent';
+import Calendar from './CalendarComponent';
 import Event from './EventComponent';
+import ArtDirectory from './ArtDirectoryComponent';
+import MusicDirectory from './MusicDirectoryComponent';
+import SportsDirectory from './SportsDirectoryComponent';
+import VolunteerDirectory from './VolunteerDirectoryComponent';
+import { ARTS } from '../Shared/Arts';
+import { MUSIC } from '../Shared/Music';
+import { SPORTS } from '../Shared/Sports';
+import { VOLUNTEER } from '../Shared/Volunteer';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { ARTS } from '../shared/Arts';
-import { MUSIC } from '../shared/Music';
-import { SPORTS } from '../shared/Sports';
-import { VOLUNTEER } from '../shared/Volunteer';
-import EventInfo from './EventInfoComponent';
 
 class Main extends Component {
     constructor(props) {
@@ -27,19 +30,23 @@ class Main extends Component {
         const HomePage = () => {
             return (
                 <Home
-                    campsite={this.state.campsites.filter(campsite => campsite.featured)[0]}
-                    promotion={this.state.promotions.filter(promotion => promotion.featured)[0]}
-                    partner={this.state.partners.filter(partner => partner.featured)[0]}
+
                 />
             );
         }
 
-        const CampsiteWithId = ({ match }) => {
+        const EventWithId = ({ match }) => {
             return (
-                <EventInfo campsite={this.state.campsites.filter(campsite => campsite.id ===
-                    +match.params.campsiteId)[0]}
-                    comments={this.state.comments.filter(comment => comment.campsiteId ===
-                        +match.params.campsiteId)} />
+                <>
+                    <ArtDirectory.ArtEventInfo artevent={this.state.arts.filter(artevent => artevent.id ===
+                        +match.params.arteventId)[0]} />
+                    <MusicDirectory.MusicEventInfo musicevent={this.state.music.filter(musicevent => musicevent.id ===
+                        +match.params.musiceventId)[0]} />
+                    <SportsDirectory.SportsEventInfo sportsevent={this.state.sports.filter(sportsevent => sportsevent.id ===
+                        +match.params.sportseventId)[0]} />
+                    <VolunteerDirectory.VolunteerEventInfo volunteerevent={this.state.volunteer.filter(volunteerevent => volunteerevent.id ===
+                        +match.params.volunteereventId)[0]} />
+                </>
             );
         }
 
@@ -48,10 +55,17 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
-                    <Route exact path='/artdirectory' render={() => <Event campsites={this.state.artevents} />} />
-                    <Route path='/directory/:campsiteId' component={CampsiteWithId} />
+                    <Route path='/event' component={Event} />
+                    <Route exact path='/artdirectory' render={() => <ArtDirectory artevent={this.props.arts} />} />
+                    <Route exact path='/musicdirectory' render={() => <MusicDirectory musicevent={this.props.music} />} />
+                    <Route exact path='/sportsdirectory' render={() => <SportsDirectory sportsevent={this.props.sports} />} />
+                    <Route exact path='/volunteerdirectory' render={() => <VolunteerDirectory volunteerevent={this.props.volunteer} />} />
+                    <Route path='/artdirectory/:arteventId' component={EventWithId} />
+                    <Route path='/musicdirectory/:musiceventId' component={EventWithId} />
+                    <Route path='/sportsdirectory/:sportseventId' component={EventWithId} />
+                    <Route path='/volunteerdirectory/:volunteereventId' component={EventWithId} />
                     <Route path='/contactus' component={Contact} />
-                    <Route path='/calendar' render={() => <Calendar partners={this.state.partners} />} />
+                    <Route path='/calendar' component={Calendar} />
                     <Redirect to='/home' />
                 </Switch>
                 <Footer />
