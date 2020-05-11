@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import EventInfo from './EventInfoComponent'
 
 function RenderMusicDirectoryItem({ musicevent }) {
     return (

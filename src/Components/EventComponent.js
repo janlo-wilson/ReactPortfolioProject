@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ArtDirectory from './ArtDirectoryComponent';
-import MusicDirectory from './MusicDirectoryComponent';
-import SportsDirectory from './SportsDirectoryComponent';
-import VolunteerDirectory from './VolunteerDirectoryComponent';
+
 
 function Event(props) {
     return (
@@ -15,7 +12,7 @@ function Event(props) {
                 <div className="col-sm-5  my-auto">
                     <p>Live theater (plays/musicals), art festivals, museum exhibition openings, and lectures.</p>
                 </div>
-                <img className="ml-5 img-thumbnail d-none d-md-block" src="img/Arts_Playbill.png" id="artsImage" alt="Show Playbill" />
+                <img className="ml-5 img-thumbnail d-none d-md-block" src={require("../images/Arts_Playbill.png")} id="artsImage" alt="Performance Playbill" />
             </div>
 
             <div className="row row-content align-items-center">
@@ -25,7 +22,7 @@ function Event(props) {
                 <div className="col-sm-5 my-auto">
                     <p>Concerts, open mic nights, symphonies, and festivals.</p>
                 </div>
-                <img className="ml-5 img-thumbnail d-none d-md-block" src="img/Music_Apocalyptica.png" alt="Apocalyptica Band" />
+                <img className="ml-5 img-thumbnail d-none d-md-block" src={require("../images/Music_Apocalyptica.png")} alt="Apocalyptica Band" />
             </div>
 
             <div className="row row-content">
@@ -35,7 +32,7 @@ function Event(props) {
                 <div class="col-sm-5 my-auto">
                     <p>Local minor league sports, surfing competitions, roller derby, and guided hikes.</p>
                 </div>
-                <img className="ml-5 img-thumbnail d-none d-md-block" src="img/Viking_Shoot.png" alt="Archery Practice" />
+                <img className="ml-5 img-thumbnail d-none d-md-block" src={require("../images/Viking_Shoot.png")} alt="Archery Practice" />
             </div>
 
             <div className="row row-content">
@@ -45,7 +42,7 @@ function Event(props) {
                 <div className="col-sm-5 my-auto">
                     <p>Looking for a way to help out your community this weekend? Find it here!</p>
                 </div>
-                <img className="ml-5 img-thumbnail d-none d-md-block" src="img/Volunteer_Mural.png" alt="Mural painted by volunteer" />
+                <img className="ml-5 img-thumbnail d-none d-md-block" src={require("../images/Volunteer_Mural.png")} alt="Mural painted by volunteer" />
             </div>
         </div>
 

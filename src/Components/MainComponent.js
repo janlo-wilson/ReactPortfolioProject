@@ -55,7 +55,7 @@ class Main extends Component {
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
-                    <Route path='/event' component={Event} />
+                    <Route exact path='/events' component={Event} />
                     <Route exact path='/artdirectory' render={() => <ArtDirectory artevent={this.props.arts} />} />
                     <Route exact path='/musicdirectory' render={() => <MusicDirectory musicevent={this.props.music} />} />
                     <Route exact path='/sportsdirectory' render={() => <SportsDirectory sportsevent={this.props.sports} />} />

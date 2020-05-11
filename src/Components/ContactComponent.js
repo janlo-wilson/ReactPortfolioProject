@@ -27,6 +27,7 @@ class Contact extends Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleFeedback = this.handleFeedback.bind(this);
     }
 
     validate(firstName, lastName, email, eventWebsite) {
@@ -58,7 +59,7 @@ class Contact extends Component {
         }
 
         if (this.state.touched.eventWebsite && !eventWebsite.includes('http')) {
-            errors.email = 'The email address should contain "http".';
+            errors.email = 'The web address should contain "http".';
         }
 
         return errors;
@@ -81,8 +82,12 @@ class Contact extends Component {
     }
 
     handleSubmit(event) {
-        console.log("Current state is " + JSON.stringify(this.state));
-        alert("Current state is " + JSON.stringify(this.state));
+        alert("Thanks for your submission!");
+        event.preventDefault();
+    }
+
+    handleFeedback(event) {
+        alert("Thank you for your feedback!");
         event.preventDefault();
     }
 
@@ -111,10 +116,15 @@ class Contact extends Component {
                             <FormGroup row>
                                 <Label htmlFor="eventType" md={2}>Event Type</Label>
                                 <Col md={10}>
-                                    <Input type="" id="eventType" name="eventType"
+                                    <Input type="select" id="eventType" name="eventType"
                                         placeholder="Event Type"
                                         value={this.state.eventType}
-                                        onChange={this.handleInputChange} />
+                                        onChange={this.handleInputChange}>
+                                        <option>Arts</option>
+                                        <option>Music</option>
+                                        <option>Sports</option>
+                                        <option>Volunteer</option>
+                                    </Input>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -176,7 +186,7 @@ class Contact extends Component {
                         <hr />
                     </div>
                     <div className="col md-10">
-                        <Form onSubmit={this.handleSubmit}>
+                        <Form onSubmit={this.handleFeedback}>
                             <FormGroup row>
                                 <Label htmlFor="firstName" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -214,24 +224,13 @@ class Contact extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Col md={{ size: 4, offset: 2 }}>
-                                    <FormGroup check>
+                            <Col md={{ size: 4, offset: 2 }}>
+                                    <div className="form-check">
                                         <Label check>
-                                            <Input type="checkbox"
-                                                name="agree"
-                                                checked={this.state.agree}
-                                                onChange={this.handleInputChange} /> {' '}
-                                            <strong>May we contact you?</strong>
+                                            <Input type="checkbox" id="agree" name="agree" /> {' '}
+                                            <strong>Click here if we may contact you.</strong>
                                         </Label>
-                                    </FormGroup>
-                                </Col>
-                                <Col md={4}>
-                                    <Input type="select" name="contactType"
-                                        value={this.state.contactType}
-                                        onChange={this.handleInputChange}>
-                                        <option>By Phone</option>
-                                        <option>By Email</option>
-                                    </Input>
+                                    </div>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -245,7 +244,7 @@ class Contact extends Component {
                             </FormGroup>
                             <FormGroup row>
                                 <Col md={{ size: 10, offset: 2 }}>
-                                    <Button type="submit" color="primary">
+                                    <Button type="submit" color="info">
                                         Send Feedback
                                     </Button>
                                 </Col>
