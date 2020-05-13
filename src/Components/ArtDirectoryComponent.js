@@ -42,13 +42,13 @@ function ArtDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={artevent.id} className="col-md-5 m-1">
-                    <RenderArtDirectoryItem artevent={artevent} />
+                    <ArtEventInfo artevent={artevent} />
                 </div>);
         }
         else {
             return (
                 <div key={artevent.id} className="col-md-5 m-1">
-                    <ArtEventInfo artevent={artevent} />
+                    <RenderArtDirectoryItem artevent={artevent} />
                 </div>);
         }
     });

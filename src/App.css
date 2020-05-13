@@ -42,6 +42,10 @@ a {
     background-color: lightyellow;
 }
 
+.modal-header {
+    background-color: lightyellow;
+}
+
 #eventForm, #feedbackForm {
     background-color: lightyellow;
     border: 1px solid darkgrey;

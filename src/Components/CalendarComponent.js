@@ -10,12 +10,11 @@ class Calendar extends Component {
     }
     render() {
         return(
-            <div>
-
+            <div className="mt-3">
+                <h2>Calendar of Events</h2>
             </div>
         );
     }
 }
-
 
 export default Calendar;

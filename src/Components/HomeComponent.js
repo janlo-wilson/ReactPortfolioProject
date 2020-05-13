@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, FormFeedback, Input, Label, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
@@ -106,7 +107,7 @@ class Home extends Component {
                 </div>
                 <div className="row row-content">
                     <img className="mr-5 img-thumbnail d-none d-lg-block" src={require("../images/Flower_Fields.png")} alt="Carlsbad Flower Fields" />
-                    <div className="col-sm-8">
+                    <div className="col-sm-8" id="popularEvent">
                         <div className="card-body">
                             <h4 className="card-title text-center mt-2" id="popularTitle">This Week's Most Popular Event</h4>
                             <div className="form-group row">
@@ -114,7 +115,7 @@ class Home extends Component {
                                     <h5>Meading at the Garden</h5>
                                     <p className="card-text">The largest mead festival on the west coast, Meading at the Garden features over 35 meaderies,
                                     cideries, and breweries.</p>
-                                    <a className="btn btn-outline-info btn-sm" role="button">More info</a>
+                                    <Link to='/artdirectory'><Button className="btn btn-outline-info btn-sm" role="button">More info</Button></Link>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +134,7 @@ class Home extends Component {
             </div>
         </div>
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                        <ModalHeader toggle={this.toggleModal}>Submit an Event</ModalHeader>
+                        <ModalHeader toggle={this.toggleModal}><strong>Submit an Event</strong></ModalHeader>
                         <ModalBody>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup row>

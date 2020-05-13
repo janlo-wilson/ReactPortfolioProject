@@ -86,13 +86,13 @@ class Contact extends Component {
         }
 
         if (this.state.touched.feedback) {
-            if(feedback.length < 10) {
+            if (feedback.length < 10) {
                 errors.feedback = "This field must be filled in.";
             } else if (feedback.length > 200) {
                 errors.feedback = "Character limit exceeded."
             }
         }
-    
+
         return errors;
     }
 
@@ -128,22 +128,18 @@ class Contact extends Component {
         return (
             <div className="container">
 
-                <div className="row row-content">
-                    <div className="col">
-                        <p>
-                            We'd love to hear from you! You can send questions via email to WhatsUpNC@gmail.com, submit
-                            an event via the form below or provide feedback via the form at the bottom of the page.
-                        </p>
-                    </div>
-                </div>
-
-                <div className="row row-content">
-                    <div className="col-12">
+                <div className="row mt-2">
+                    <h3>Contact Us</h3>
+                    <p>
+                        We'd love to hear from you! You can send questions via email to <a href="mailto:WhatsUPNC@gmail.com">WhatsUpNC@gmail.com</a>. 
+                        You may also submit an event or provide feedback via the forms.
+                    </p>
+                    <div className="col-12 mt-3">
                         <h2>Submit an Event</h2>
                         <hr />
                     </div>
-                    <div className="col md-10">
-                        <Form onSubmit={this.handleSubmit}>
+                    <div id="eventForm" className="col md-10">
+                        <Form onSubmit={this.handleSubmit} className="mt-3">
                             <FormGroup row>
                                 <Label htmlFor="eventType" md={2}>Event Type</Label>
                                 <Col md={10}>
@@ -222,8 +218,8 @@ class Contact extends Component {
                         <h2>Give Us Your Feedback</h2>
                         <hr />
                     </div>
-                    <div className="col md-10">
-                        <Form onSubmit={this.handleFeedback}>
+                    <div id="feedbackForm" className="col md-10">
+                        <Form onSubmit={this.handleFeedback} className="mt-3">
                             <FormGroup row>
                                 <Label htmlFor="firstName" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -261,7 +257,7 @@ class Contact extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                            <Col md={{ size: 4, offset: 2 }}>
+                                <Col md={{ size: 4, offset: 2 }}>
                                     <div className="form-check">
                                         <Label check>
                                             <Input type="checkbox" id="agree" name="agree" /> {' '}
