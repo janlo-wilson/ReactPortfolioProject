@@ -7,21 +7,24 @@ class Contact extends Component {
         super(props);
 
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            eventType: '',
             eventDate: '',
             eventTime: '',
             eventWebsite: '',
-            agree: false,
+            firstName: '',
+            lastName: '',
+            email: '',
+            email2: '',
             feedback: '',
+            agree: false,
             touched: {
+                eventDate: false,
+                eventTime: false,
+                eventWebsite: false,
                 firstName: false,
                 lastName: false,
-                phoneNum: false,
                 email: false,
-                eventWebsite: false
+                email2: false,
+                feedback: false
             }
         };
 
@@ -30,13 +33,33 @@ class Contact extends Component {
         this.handleFeedback = this.handleFeedback.bind(this);
     }
 
-    validate(firstName, lastName, email, eventWebsite) {
+    validate(eventDate, eventTime, eventWebsite, firstName, lastName, email, email2, feedback) {
         const errors = {
+            eventDate: '',
+            eventTime: '',
+            eventWebsite: '',
             firstName: '',
             lastName: '',
             email: '',
-            eventWebsite: ''
+            email2: '',
+            feedback: ''
         };
+
+        if (this.state.touched.eventDate) {
+            if (eventDate.length < 10) {
+                errors.eventDate = "Must provide a valid date.";
+            } else if (eventDate.length > 15) {
+                errors.eventDate = "Must provide a valid date.";
+            }
+        }
+
+        if (this.state.touched.eventTime && !eventTime.includes(':')) {
+            errors.eventTime = "Must be a valid time.";
+        }
+
+        if (this.state.touched.eventWebsite && !eventWebsite.includes('/')) {
+            errors.eventWebsite = 'Must be a valid web address.';
+        }
 
         if (this.state.touched.firstName) {
             if (firstName.length < 2) {
@@ -55,13 +78,21 @@ class Contact extends Component {
         }
 
         if (this.state.touched.email && !email.includes('@')) {
-            errors.email = "The email address should contain an @.";
+            errors.email = "Must be a valid email address.";
         }
 
-        if (this.state.touched.eventWebsite && !eventWebsite.includes('http')) {
-            errors.email = 'The web address should contain "http".';
+        if (this.state.touched.email2 && !email2.includes('@')) {
+            errors.email2 = "Must be a valid email address.";
         }
 
+        if (this.state.touched.feedback) {
+            if(feedback.length < 10) {
+                errors.feedback = "This field must be filled in.";
+            } else if (feedback.length > 200) {
+                errors.feedback = "Character limit exceeded."
+            }
+        }
+    
         return errors;
     }
 
@@ -92,7 +123,7 @@ class Contact extends Component {
     }
 
     render() {
-        const errors = this.validate(this.state.firstName, this.state.lastName, this.state.email, this.state.eventWebsite);
+        const errors = this.validate(this.state.eventDate, this.state.eventTime, this.state.eventWebsite, this.state.firstName, this.state.lastName, this.state.email, this.state.email2, this.state.feedback);
 
         return (
             <div className="container">
@@ -133,7 +164,10 @@ class Contact extends Component {
                                     <Input type="date" id="eventDate" name="eventDate"
                                         placeholder="Event Date"
                                         value={this.state.eventDate}
+                                        invalid={errors.eventDate}
+                                        onBlur={this.handleBlur("eventDate")}
                                         onChange={this.handleInputChange} />
+                                    <FormFeedback>{errors.eventDate}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -142,7 +176,10 @@ class Contact extends Component {
                                     <Input type="time" id="eventTime" name="eventTime"
                                         placeholder="Event Time"
                                         value={this.state.eventTime}
+                                        invalid={errors.eventTime}
+                                        onBlur={this.handleBlur("eventTime")}
                                         onChange={this.handleInputChange} />
+                                    <FormFeedback>{errors.eventTime}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -212,15 +249,15 @@ class Contact extends Component {
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label htmlFor="email" md={2}>Email</Label>
+                                <Label htmlFor="email2" md={2}>Email</Label>
                                 <Col md={10}>
-                                    <Input type="email" id="email" name="email"
+                                    <Input type="email" id="email2" name="email2"
                                         placeholder="Email"
-                                        value={this.state.email}
-                                        invalid={errors.email}
-                                        onBlur={this.handleBlur("email")}
+                                        value={this.state.email2}
+                                        invalid={errors.email2}
+                                        onBlur={this.handleBlur("email2")}
                                         onChange={this.handleInputChange} />
-                                    <FormFeedback>{errors.email}</FormFeedback>
+                                    <FormFeedback>{errors.email2}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
@@ -239,7 +276,10 @@ class Contact extends Component {
                                     <Input type="textarea" id="feedback" name="feedback"
                                         rows="10"
                                         value={this.state.feedback}
+                                        invalid={errors.feedback}
+                                        onBlur={this.handleBlur("feedback")}
                                         onChange={this.handleInputChange}></Input>
+                                    <FormFeedback>{errors.feedback}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             <FormGroup row>

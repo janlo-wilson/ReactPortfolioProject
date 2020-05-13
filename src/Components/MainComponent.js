@@ -50,16 +50,17 @@ class Main extends Component {
             );
         }
 
+
         return (
             <div>
                 <Header />
                 <Switch>
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/events' component={Event} />
-                    <Route exact path='/artdirectory' render={() => <ArtDirectory artevent={this.props.arts} />} />
-                    <Route exact path='/musicdirectory' render={() => <MusicDirectory musicevent={this.props.music} />} />
-                    <Route exact path='/sportsdirectory' render={() => <SportsDirectory sportsevent={this.props.sports} />} />
-                    <Route exact path='/volunteerdirectory' render={() => <VolunteerDirectory volunteerevent={this.props.volunteer} />} />
+                    <Route exact path='/artdirectory' render={() => <ArtDirectory arts={this.state.arts} />} />
+                    <Route exact path='/musicdirectory' render={() => <MusicDirectory music={this.state.music} />} />
+                    <Route exact path='/sportsdirectory' render={() => <SportsDirectory sports={this.state.sports} />} />
+                    <Route exact path='/volunteerdirectory' render={() => <VolunteerDirectory volunteer={this.state.volunteer} />} />
                     <Route path='/artdirectory/:arteventId' component={EventWithId} />
                     <Route path='/musicdirectory/:musiceventId' component={EventWithId} />
                     <Route path='/sportsdirectory/:sportseventId' component={EventWithId} />

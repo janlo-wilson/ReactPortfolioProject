@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Col } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, FormFeedback, Input, Label, Col } from 'reactstrap';
 
 class Home extends Component {
 
@@ -7,12 +7,52 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            eventDate: '',
+            eventTime: '',
+            eventWebsite: '',
+            email: '',
+            touched: {
+                eventDate: false,
+                eventTime: false,
+                eventWebsite: false,
+                email: false
+            }
         };
 
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    validate(eventDate, eventTime, eventWebsite, email) {
+        const errors = {
+            eventDate: '',
+            eventTime: '',
+            eventWebsite: '',
+            email: ''
+        };
+
+        if (this.state.touched.eventDate) {
+            if (eventDate.length < 10) {
+                errors.eventDate = "Must provide a valid date.";
+            } else if (eventDate.length > 15) {
+                errors.eventDate = "Must provide a valid date.";
+            }
+        }
+
+        if (this.state.touched.eventTime && !eventTime.includes(':')) {
+            errors.eventTime = "Must be a valid time.";
+        }
+
+        if (this.state.touched.eventWebsite && !eventWebsite.includes('/')) {
+            errors.eventWebsite = 'Must be a valid web address.';
+        }
+
+        if (this.state.touched.email && !email.includes('@')) {
+            errors.email = "Must be a valid email address.";
+        }
+        return errors;
     }
 
     toggleModal() {
@@ -31,12 +71,20 @@ class Home extends Component {
         });
     }
 
+    handleBlur = (field) => () => {
+        this.setState({
+            touched: { ...this.state.touched, [field]: true }
+        });
+    }
+
     handleSubmit(event) {
         alert("Thank you for your submission!");
         event.preventDefault();
     }
 
     render() {
+        const errors = this.validate(this.state.eventDate, this.state.eventTime, this.state.eventWebsite, this.state.email)
+
         return (
             <div className="container">
                 <div className="row row-content">
@@ -91,10 +139,15 @@ class Home extends Component {
                                 <FormGroup row>
                                     <Label htmlFor="eventType" md={2}>Event Type</Label>
                                     <Col md={10}>
-                                        <Input type="" id="eventType" name="eventType"
-                                            placeholder="Event Type"
-                                            value={this.state.eventType}
-                                            onChange={this.handleInputChange} />
+                                    <Input type="select" id="eventType" name="eventType"
+                                        placeholder="Event Type"
+                                        value={this.state.eventType}
+                                        onChange={this.handleInputChange}>
+                                        <option>Arts</option>
+                                        <option>Music</option>
+                                        <option>Sports</option>
+                                        <option>Volunteer</option>
+                                    </Input>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -103,7 +156,10 @@ class Home extends Component {
                                         <Input type="date" id="eventDate" name="eventDate"
                                             placeholder="Event Date"
                                             value={this.state.eventDate}
+                                            invalid={errors.eventDate}
+                                            onBlur={this.handleBlur("eventDate")}
                                             onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.eventDate}</FormFeedback>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -112,7 +168,10 @@ class Home extends Component {
                                         <Input type="time" id="eventTime" name="eventTime"
                                             placeholder="Event Time"
                                             value={this.state.eventTime}
+                                            invalid={errors.eventTime}
+                                            onBlur={this.handleBlur("eventTime")}
                                             onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.eventTime}</FormFeedback>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -121,7 +180,10 @@ class Home extends Component {
                                         <Input type="url" id="eventWebsite" name="eventWebsite"
                                             placeholder="Event Website"
                                             value={this.state.eventWebsite}
+                                            invalid={errors.eventWebsite}
+                                            onBlur={this.handleBlur("eventWebsite")}
                                             onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.eventWebsite}</FormFeedback>
                                     </Col>
                                 </FormGroup>
                                 <FormGroup row>
@@ -130,7 +192,10 @@ class Home extends Component {
                                         <Input type="email" id="email" name="email"
                                             placeholder="Email"
                                             value={this.state.email}
+                                            invalid={errors.email}
+                                            onBlur={this.handleBlur("email")}
                                             onChange={this.handleInputChange} />
+                                        <FormFeedback>{errors.email}</FormFeedback>
                                     </Col>
                                 </FormGroup>
                             </Form>
