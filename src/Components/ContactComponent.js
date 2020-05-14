@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
+import ReactTooltip from 'react-tooltip';
 
 class Contact extends Component {
 
@@ -204,8 +205,9 @@ class Contact extends Component {
                             </FormGroup>
                             <FormGroup row>
                                 <Col md={{ size: 10, offset: 2 }}>
-                                    <Button type="submit" color="info">
+                                    <Button type="submit" color="info" data-tip="We may contact you for more information!">
                                         Submit
+                                        <ReactTooltip />
                                     </Button>
                                 </Col>
                             </FormGroup>

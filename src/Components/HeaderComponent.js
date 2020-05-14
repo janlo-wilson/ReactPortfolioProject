@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarToggler, NavItem, Collapse, Jumbotron } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -45,8 +45,8 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/events">
-                                        <i className="fa fa-bullhorn fa-lg" /> Events
+                                <NavLink className="nav-link" to="/events">
+                                    <i className="fa fa-bullhorn fa-lg" /> Events
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>

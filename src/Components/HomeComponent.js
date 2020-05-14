@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, FormFeedback, Input, Label, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 
 class Home extends Component {
 
@@ -200,7 +201,7 @@ class Home extends Component {
                                     </Col>
                                 </FormGroup>
                             </Form>
-                            <Button type="submit" value="submit" color="info">Submit</Button>
+                            <Button type="submit" value="submit" color="info" data-tip="We may contact you for more information!">Submit<ReactTooltip /></Button>
                         </ModalBody>
                     </Modal>
                 </div>

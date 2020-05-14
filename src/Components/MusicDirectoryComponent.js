@@ -1,36 +1,20 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardFooter, Button } from 'reactstrap';
+import { Card, CardBody, CardHeader } from 'reactstrap';
+import MusicEventInfo from './MusicEventInfoComponent';
 import { Link } from 'react-router-dom';
 
 function RenderMusicDirectoryItem({ musicevent }) {
     return (
-        <div className="col-md-5 m-1">
-            <Card>
-                <Link to={`/musicdirectory/${musicevent.id}`}>
-                    <CardTitle>{musicevent.name}</CardTitle>
-                    <CardBody>{musicevent.date}, {musicevent.time}</CardBody>
-                    <CardFooter>
-                        <Button outline type="submit" color="danger"><i className="fa fa-heart"></i> Favorite</Button>
-                    </CardFooter>
-                </Link>
-            </Card>
-        </div>
-    );
-}
-
-function MusicEventInfo({ musicevent }) {
-    return (
         <div className="container">
-            <div className="row">
+            <div className="row row-content">
                 <div className="col">
-                    <h3>{musicevent.name}</h3>
-                    <h4>{musicevent.date}, {musicevent.time}, {musicevent.location}</h4>
-                    <hr />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <p>{musicevent.description}</p>
+                    <Card>
+                        <CardHeader><Link to={`/musicdirectory/${musicevent.id}`}>{musicevent.name}</Link></CardHeader>
+                        <CardBody><em>{musicevent.date} -- {musicevent.time}</em><br />
+                        {musicevent.fragment}<br /><br />
+                        <Link to="/events">Return to Events</Link>
+                        </CardBody>
+                    </Card>
                 </div>
             </div>
         </div>
@@ -42,26 +26,29 @@ function MusicDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={musicevent.id} className="col-md-5 m-1">
-                    <RenderMusicDirectoryItem musicevent={musicevent} />
+                    <MusicEventInfo 
+                    musiceventId={props.music.id}
+                    musicevent={musicevent} />
                 </div>);
         }
         else {
             return (
                 <div key={musicevent.id} className="col-md-5 m-1">
-                    <MusicEventInfo musicevent={musicevent} />
+                    <RenderMusicDirectoryItem musicevent={musicevent} />
                 </div>);
         }
     });
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row mt-3">
                 <div className="col">
                     <h2>Music Events</h2>
+                    <p>Click on any event's title for more information about that event.</p>
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row row-content">
                 {musicdirectory}
             </div>
         </div>

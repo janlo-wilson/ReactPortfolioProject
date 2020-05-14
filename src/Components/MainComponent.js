@@ -9,6 +9,10 @@ import ArtDirectory from './ArtDirectoryComponent';
 import MusicDirectory from './MusicDirectoryComponent';
 import SportsDirectory from './SportsDirectoryComponent';
 import VolunteerDirectory from './VolunteerDirectoryComponent';
+import ArtEventInfo from './ArtEventInfoComponent';
+import MusicEventInfo from './MusicEventInfoComponent';
+import SportsEventInfo from './SportsEventInfoComponent';
+import VolunteerEventInfo from './VolunteerEventInfoComponent';
 import { ARTS } from '../Shared/Arts';
 import { MUSIC } from '../Shared/Music';
 import { SPORTS } from '../Shared/Sports';
@@ -35,18 +39,31 @@ class Main extends Component {
             );
         }
 
-        const EventWithId = ({ match }) => {
+        const ArtEventWithId = ({ match }) => {
+            return ( 
+                    <ArtEventInfo artevent={this.state.arts.filter(artevent => artevent.id ===
+                        +match.params.arteventId)[0]} />    
+                );
+            }
+
+        const MusicEventWithId = ({ match }) => {
             return (
-                <>
-                    <ArtDirectory.ArtEventInfo artevent={this.state.arts.filter(artevent => artevent.id ===
-                        +match.params.arteventId)[0]} />
-                    <MusicDirectory.MusicEventInfo musicevent={this.state.music.filter(musicevent => musicevent.id ===
-                        +match.params.musiceventId)[0]} />
-                    <SportsDirectory.SportsEventInfo sportsevent={this.state.sports.filter(sportsevent => sportsevent.id ===
-                        +match.params.sportseventId)[0]} />
-                    <VolunteerDirectory.VolunteerEventInfo volunteerevent={this.state.volunteer.filter(volunteerevent => volunteerevent.id ===
-                        +match.params.volunteereventId)[0]} />
-                </>
+                <MusicEventInfo musicevent={this.state.music.filter(musicevent => musicevent.id ===
+                    +match.params.musiceventId)[0]} />
+            );
+        }
+
+        const SportsEventWithId = ({ match }) => {
+            return (
+                <SportsEventInfo sportsevent={this.state.sports.filter(sportsevent => sportsevent.id ===
+                    +match.params.sportseventId)[0]} />
+            );
+        }
+
+        const VolunteerEventWithId = ({ match }) => {
+            return (
+                <VolunteerEventInfo volunteerevent={this.state.volunteer.filter(volunteerevent => volunteerevent.id ===
+                    +match.params.volunteereventId)[0]} />
             );
         }
 
@@ -61,10 +78,10 @@ class Main extends Component {
                             <Route exact path='/musicdirectory' render={() => <MusicDirectory music={this.state.music} />} />
                             <Route exact path='/sportsdirectory' render={() => <SportsDirectory sports={this.state.sports} />} />
                             <Route exact path='/volunteerdirectory' render={() => <VolunteerDirectory volunteer={this.state.volunteer} />} />
-                            <Route path='/artdirectory/:arteventId' component={EventWithId} />
-                            <Route path='/musicdirectory/:musiceventId' component={EventWithId} />
-                            <Route path='/sportsdirectory/:sportseventId' component={EventWithId} />
-                            <Route path='/volunteerdirectory/:volunteereventId' component={EventWithId} />
+                            <Route path='/artdirectory/:arteventId' component={ArtEventWithId} />
+                            <Route path='/musicdirectory/:musiceventId' component={MusicEventWithId} />
+                            <Route path='/sportsdirectory/:sportseventId' component={SportsEventWithId} />
+                            <Route path='/volunteerdirectory/:volunteereventId' component={VolunteerEventWithId} />
                             <Route path='/contactus' component={Contact} />
                             <Route path='/calendar' component={Calendar} />
                             <Redirect to='/home' />

@@ -1,36 +1,20 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardFooter, Button } from 'reactstrap';
+import { Card, CardBody, CardHeader } from 'reactstrap';
+import VolunteerEventInfo from './VolunteerEventInfoComponent';
 import { Link } from 'react-router-dom';
 
 function RenderVolunteerDirectoryItem({ volunteerevent }) {
     return (
-        <div className="col-md-5 m-1">
-            <Card>
-                <Link to={`/volunteerdirectory/${volunteerevent.id}`}>
-                    <CardTitle>{volunteerevent.name}</CardTitle>
-                    <CardBody>{volunteerevent.date}, {volunteerevent.time}</CardBody>
-                    <CardFooter>
-                        <Button outline type="submit" color="danger"><i className="fa fa-heart"></i> Favorite</Button>
-                    </CardFooter>
-                </Link>
-            </Card>
-        </div>
-    );
-}
-
-function VolunteerEventInfo({ volunteerevent }) {
-    return (
         <div className="container">
-            <div className="row">
+            <div className="row row-content">
                 <div className="col">
-                    <h3>{volunteerevent.name}</h3>
-                    <h4>{volunteerevent.date}, {volunteerevent.time}, {volunteerevent.location}</h4>
-                    <hr />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <p>{volunteerevent.description}</p>
+                    <Card>
+                        <CardHeader><Link to={`/volunteerdirectory/${volunteerevent.id}`}>{volunteerevent.name}</Link></CardHeader>
+                        <CardBody><em>{volunteerevent.date} -- {volunteerevent.time}</em><br />
+                        {volunteerevent.fragment}<br /><br />
+                        <Link to="/events">Return to Events</Link>
+                        </CardBody>
+                    </Card>
                 </div>
             </div>
         </div>
@@ -42,26 +26,29 @@ function VolunteerDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={volunteerevent.id} className="col-md-5 m-1">
-                    <RenderVolunteerDirectoryItem volunteerevent={volunteerevent} />
+                    <VolunteerEventInfo 
+                    volunteereventId={props.volunteer.id}
+                    volunteerevent={volunteerevent} />
                 </div>);
         }
         else {
             return (
                 <div key={volunteerevent.id} className="col-md-5 m-1">
-                    <VolunteerEventInfo volunteerevent={volunteerevent} />
+                    <RenderVolunteerDirectoryItem volunteerevent={volunteerevent} />
                 </div>);
         }
     });
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row mt-3">
                 <div className="col">
                     <h2>Volunteer Events</h2>
+                    <p>Click on an event for more info.</p>
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row row-content">
                 {volunteerdirectory}
             </div>
         </div>

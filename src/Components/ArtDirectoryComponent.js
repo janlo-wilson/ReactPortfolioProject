@@ -1,36 +1,20 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardFooter, Button } from 'reactstrap';
+import { Card, CardBody, CardHeader } from 'reactstrap';
+import ArtEventInfo from './ArtEventInfoComponent';
 import { Link } from 'react-router-dom';
 
 function RenderArtDirectoryItem({ artevent }) {
     return (
-        <div className="col-md-5 m-1">
-            <Card>
-                <Link to={`/artdirectory/${artevent.id}`}>
-                    <CardTitle>{artevent.name}</CardTitle>
-                    <CardBody>{artevent.date}, {artevent.time}</CardBody>
-                    <CardFooter>
-                        <Button outline type="submit" color="danger"><i className="fa fa-heart"></i> Favorite</Button>
-                    </CardFooter>
-                </Link>
-            </Card>
-        </div>
-    );
-}
-
-function ArtEventInfo({ artevent }) {
-    return (
         <div className="container">
-            <div className="row">
+            <div className="row row-content">
                 <div className="col">
-                    <h3>{artevent.name}</h3>
-                    <h4>{artevent.date}, {artevent.time}, {artevent.location}</h4>
-                    <hr />
-                </div>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <p>{artevent.description}</p>
+                    <Card>
+                        <CardHeader><Link to={`/artdirectory/${artevent.id}`}>{artevent.name}</Link></CardHeader>
+                        <CardBody><em>{artevent.date} -- {artevent.time}</em><br />
+                        {artevent.fragment}<br /><br />
+                        <Link to="/events">Return to Events</Link>
+                        </CardBody>
+                    </Card>
                 </div>
             </div>
         </div>
@@ -42,26 +26,29 @@ function ArtDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={artevent.id} className="col-md-5 m-1">
-                    <ArtEventInfo artevent={artevent} />
+                    <ArtEventInfo
+                        arteventId={props.arts.id}
+                        artevent={artevent} />
                 </div>);
         }
         else {
             return (
                 <div key={artevent.id} className="col-md-5 m-1">
                     <RenderArtDirectoryItem artevent={artevent} />
-                </div>);
+                </div>);   
         }
     });
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row mt-3">
                 <div className="col">
-                    <h2>Arts and Theater Events</h2>
+                    <h2>Art and Theater Events</h2>
+                    <p>Click on any event's title for more information about that event.</p>
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row row-content">
                 {artdirectory}
             </div>
         </div>
