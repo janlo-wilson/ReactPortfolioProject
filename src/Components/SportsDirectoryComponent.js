@@ -9,10 +9,10 @@ function RenderSportsDirectoryItem({ sportsevent }) {
             <div className="row row-content">
                 <div className="col">
                     <Card>
-                        <CardHeader><Link to={`/sportsdirectory/${sportsevent.id}`}>{sportsevent.name}</Link></CardHeader>
+                        <CardHeader><Link to={`/sportsdirectory/${sportsevent.id}`}><strong>{sportsevent.name}</strong></Link></CardHeader>
                         <CardBody><em>{sportsevent.date} -- {sportsevent.time}</em><br />
-                        {sportsevent.fragment}<br /><br />
-                        <Link to="/events">Return to Events</Link>
+                            {sportsevent.fragment}<br /><br />
+                            <Link to="/events">Return to Events</Link>
                         </CardBody>
                     </Card>
                 </div>
@@ -26,9 +26,9 @@ function SportsDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={sportsevent.id} className="col-md-5 m-1">
-                    <SportsEventInfo 
-                    sportseventId={props.sports.id}
-                    sportsevent={sportsevent} />
+                    <SportsEventInfo
+                        sportseventId={props.sports.id}
+                        sportsevent={sportsevent} />
                 </div>);
         }
         else {

@@ -116,7 +116,7 @@ class Home extends Component {
                                     <h5>Meading at the Garden</h5>
                                     <p className="card-text">The largest mead festival on the west coast, Meading at the Garden features over 35 meaderies,
                                     cideries, and breweries.</p>
-                                    <Link to='/artdirectory'><Button className="btn btn-outline-info btn-sm" role="button">More info</Button></Link>
+                                    <Link to='/artdirectory/3'><Button className="btn btn-outline-info btn-sm" role="button">More info</Button></Link>
                                 </div>
                             </div>
                         </div>

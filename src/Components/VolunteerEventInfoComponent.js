@@ -13,7 +13,7 @@ function VolunteerEventInfo({ volunteerevent }) {
             </div>
             <div className="row">
                 <div className="col">
-                    <p>{volunteerevent.description}</p>
+                    <p>{volunteerevent.description} <a href={volunteerevent.url} target="_blank" rel="noopener noreferrer">More info</a></p>
                 </div>
             </div>
             <Button color="info" href="/volunteerdirectory"><i className="fa fa-arrow-left"></i> Back</Button>

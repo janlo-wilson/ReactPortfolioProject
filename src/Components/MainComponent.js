@@ -40,11 +40,11 @@ class Main extends Component {
         }
 
         const ArtEventWithId = ({ match }) => {
-            return ( 
-                    <ArtEventInfo artevent={this.state.arts.filter(artevent => artevent.id ===
-                        +match.params.arteventId)[0]} />    
-                );
-            }
+            return (
+                <ArtEventInfo artevent={this.state.arts.filter(artevent => artevent.id ===
+                    +match.params.arteventId)[0]} />
+            );
+        }
 
         const MusicEventWithId = ({ match }) => {
             return (
@@ -71,21 +71,21 @@ class Main extends Component {
         return (
             <div>
                 <Header />
-                        <Switch>
-                            <Route path='/home' component={HomePage} />
-                            <Route exact path='/events' component={Event} />
-                            <Route exact path='/artdirectory' render={() => <ArtDirectory arts={this.state.arts} />} />
-                            <Route exact path='/musicdirectory' render={() => <MusicDirectory music={this.state.music} />} />
-                            <Route exact path='/sportsdirectory' render={() => <SportsDirectory sports={this.state.sports} />} />
-                            <Route exact path='/volunteerdirectory' render={() => <VolunteerDirectory volunteer={this.state.volunteer} />} />
-                            <Route path='/artdirectory/:arteventId' component={ArtEventWithId} />
-                            <Route path='/musicdirectory/:musiceventId' component={MusicEventWithId} />
-                            <Route path='/sportsdirectory/:sportseventId' component={SportsEventWithId} />
-                            <Route path='/volunteerdirectory/:volunteereventId' component={VolunteerEventWithId} />
-                            <Route path='/contactus' component={Contact} />
-                            <Route path='/calendar' component={Calendar} />
-                            <Redirect to='/home' />
-                        </Switch>
+                <Switch>
+                    <Route path='/home' component={HomePage} />
+                    <Route exact path='/events' component={Event} />
+                    <Route exact path='/artdirectory' render={() => <ArtDirectory arts={this.state.arts} />} />
+                    <Route exact path='/musicdirectory' render={() => <MusicDirectory music={this.state.music} />} />
+                    <Route exact path='/sportsdirectory' render={() => <SportsDirectory sports={this.state.sports} />} />
+                    <Route exact path='/volunteerdirectory' render={() => <VolunteerDirectory volunteer={this.state.volunteer} />} />
+                    <Route path='/artdirectory/:arteventId' component={ArtEventWithId} />
+                    <Route path='/musicdirectory/:musiceventId' component={MusicEventWithId} />
+                    <Route path='/sportsdirectory/:sportseventId' component={SportsEventWithId} />
+                    <Route path='/volunteerdirectory/:volunteereventId' component={VolunteerEventWithId} />
+                    <Route path='/contactus' component={Contact} />
+                    <Route path='/calendar' component={Calendar} />
+                    <Redirect to='/home' />
+                </Switch>
                 <Footer />
             </div>
         );

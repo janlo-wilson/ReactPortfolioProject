@@ -13,7 +13,7 @@ function SportsEventInfo({ sportsevent }) {
             </div>
             <div className="row">
                 <div className="col">
-                    <p>{sportsevent.description}</p>
+                    <p>{sportsevent.description} <a href={sportsevent.url} target="_blank" rel="noopener noreferrer">More info</a></p>
                 </div>
             </div>
             <Button color="info" href="/sportsdirectory"><i className="fa fa-arrow-left"></i> Back</Button>

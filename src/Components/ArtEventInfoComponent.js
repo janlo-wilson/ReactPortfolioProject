@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button } from 'reactstrap'
 
 function ArtEventInfo({ artevent }) {
     return (
@@ -13,7 +13,7 @@ function ArtEventInfo({ artevent }) {
             </div>
             <div className="row">
                 <div className="col">
-                    <p>{artevent.description}</p>
+                    <p>{artevent.description} <a href={artevent.url} target="_blank" rel="noopener noreferrer">More info</a></p>
                 </div>
             </div>
             <Button color="info" href="/artdirectory"><i className="fa fa-arrow-left"></i> Back</Button>

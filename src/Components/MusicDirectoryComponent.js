@@ -9,10 +9,10 @@ function RenderMusicDirectoryItem({ musicevent }) {
             <div className="row row-content">
                 <div className="col">
                     <Card>
-                        <CardHeader><Link to={`/musicdirectory/${musicevent.id}`}>{musicevent.name}</Link></CardHeader>
+                        <CardHeader><Link to={`/musicdirectory/${musicevent.id}`}><strong>{musicevent.name}</strong></Link></CardHeader>
                         <CardBody><em>{musicevent.date} -- {musicevent.time}</em><br />
-                        {musicevent.fragment}<br /><br />
-                        <Link to="/events">Return to Events</Link>
+                            {musicevent.fragment}<br /><br />
+                            <Link to="/events">Return to Events</Link>
                         </CardBody>
                     </Card>
                 </div>
@@ -26,9 +26,9 @@ function MusicDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={musicevent.id} className="col-md-5 m-1">
-                    <MusicEventInfo 
-                    musiceventId={props.music.id}
-                    musicevent={musicevent} />
+                    <MusicEventInfo
+                        musiceventId={props.music.id}
+                        musicevent={musicevent} />
                 </div>);
         }
         else {

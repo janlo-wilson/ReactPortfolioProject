@@ -13,7 +13,7 @@ function MusicEventInfo({ musicevent }) {
             </div>
             <div className="row">
                 <div className="col">
-                    <p>{musicevent.description}</p>
+                    <p>{musicevent.description} <a href={musicevent.url} target="_blank" rel="noopener noreferrer">More info</a></p>
                 </div>
             </div>
             <Button color="info" href="/musicdirectory"><i className="fa fa-arrow-left"></i> Back</Button>

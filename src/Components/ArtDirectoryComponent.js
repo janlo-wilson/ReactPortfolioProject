@@ -9,10 +9,10 @@ function RenderArtDirectoryItem({ artevent }) {
             <div className="row row-content">
                 <div className="col">
                     <Card>
-                        <CardHeader><Link to={`/artdirectory/${artevent.id}`}>{artevent.name}</Link></CardHeader>
+                        <CardHeader><Link to={`/artdirectory/${artevent.id}`}><strong>{artevent.name}</strong></Link></CardHeader>
                         <CardBody><em>{artevent.date} -- {artevent.time}</em><br />
-                        {artevent.fragment}<br /><br />
-                        <Link to="/events">Return to Events</Link>
+                            {artevent.fragment}<br /><br />
+                            <Link to="/events">Return to Events</Link>
                         </CardBody>
                     </Card>
                 </div>
@@ -35,7 +35,7 @@ function ArtDirectory(props) {
             return (
                 <div key={artevent.id} className="col-md-5 m-1">
                     <RenderArtDirectoryItem artevent={artevent} />
-                </div>);   
+                </div>);
         }
     });
 

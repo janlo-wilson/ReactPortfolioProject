@@ -132,7 +132,7 @@ class Contact extends Component {
                 <div className="row mt-2">
                     <h3>Contact Us</h3>
                     <p>
-                        We'd love to hear from you! You can send questions via email to <a href="mailto:WhatsUPNC@gmail.com">WhatsUpNC@gmail.com</a>. 
+                        We'd love to hear from you! You can send questions via email to <a href="mailto:WhatsUPNC@gmail.com">WhatsUpNC@gmail.com</a>.
                         You may also submit an event or provide feedback via the forms.
                     </p>
                     <div className="col-12 mt-3">

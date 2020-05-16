@@ -9,10 +9,10 @@ function RenderVolunteerDirectoryItem({ volunteerevent }) {
             <div className="row row-content">
                 <div className="col">
                     <Card>
-                        <CardHeader><Link to={`/volunteerdirectory/${volunteerevent.id}`}>{volunteerevent.name}</Link></CardHeader>
+                        <CardHeader><Link to={`/volunteerdirectory/${volunteerevent.id}`}><strong>{volunteerevent.name}</strong></Link></CardHeader>
                         <CardBody><em>{volunteerevent.date} -- {volunteerevent.time}</em><br />
-                        {volunteerevent.fragment}<br /><br />
-                        <Link to="/events">Return to Events</Link>
+                            {volunteerevent.fragment}<br /><br />
+                            <Link to="/events">Return to Events</Link>
                         </CardBody>
                     </Card>
                 </div>
@@ -26,9 +26,9 @@ function VolunteerDirectory(props) {
         if (props.wasSelected) {
             return (
                 <div key={volunteerevent.id} className="col-md-5 m-1">
-                    <VolunteerEventInfo 
-                    volunteereventId={props.volunteer.id}
-                    volunteerevent={volunteerevent} />
+                    <VolunteerEventInfo
+                        volunteereventId={props.volunteer.id}
+                        volunteerevent={volunteerevent} />
                 </div>);
         }
         else {
